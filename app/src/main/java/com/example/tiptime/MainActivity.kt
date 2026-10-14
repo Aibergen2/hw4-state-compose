@@ -67,9 +67,10 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun TipTimeLayout() {
     var billInput by remember { mutableStateOf("") }
-    val bill = billInput.toDoubleOrNull() ?: 0.0
-    val tip = calculateTip(bill)
     var tipInput by remember { mutableStateOf("") }
+    val bill = billInput.toDoubleOrNull() ?: 0.0
+    val tipPercent = tipInput.toDoubleOrNull() ?: 0.0
+    val tip = calculateTip(bill,tipPercent)
     Column(
         modifier = Modifier
             .statusBarsPadding()
