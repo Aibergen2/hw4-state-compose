@@ -73,6 +73,7 @@ class MainActivity : ComponentActivity() {
 fun TipTimeLayout() {
     var billInput by remember { mutableStateOf("") }
     var tipInput by remember { mutableStateOf("") }
+    var roundUp by remember { mutableStateOf(false) }
     val bill = billInput.toDoubleOrNull() ?: 0.0
     val tipPercent = tipInput.toDoubleOrNull() ?: 0.0
     val tip = calculateTip(bill,tipPercent)
@@ -109,6 +110,11 @@ fun TipTimeLayout() {
             value = tipInput,
             onValueChange = { tipInput = it },
             modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth()
+        )
+        RoundTheTipRow(
+            roundUp = roundUp,
+            onRoundUpChanged = { roundUp = it },
+            modifier = Modifier.padding(bottom = 32.dp)
         )
         Text(
             text = stringResource(R.string.tip_amount, tip),
