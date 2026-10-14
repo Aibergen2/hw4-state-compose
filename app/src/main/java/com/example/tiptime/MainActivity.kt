@@ -69,6 +69,7 @@ fun TipTimeLayout() {
     var billInput by remember { mutableStateOf("") }
     val bill = billInput.toDoubleOrNull() ?: 0.0
     val tip = calculateTip(bill)
+    var tipInput by remember { mutableStateOf("") }
     Column(
         modifier = Modifier
             .statusBarsPadding()
@@ -91,8 +92,8 @@ fun TipTimeLayout() {
         )
         EditNumberField(
             label=R.string.how_was_the_service,
-            value = billInput,
-            onValueChange = { billInput = it },
+            value = tipInput,
+            onValueChange = { tipInput = it },
             modifier = Modifier.padding(bottom = 32.dp).fillMaxWidth()
         )
         Text(
