@@ -36,31 +36,32 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
-
+val artworks = listOf(
+    Artwork(R.drawable.art1, "The Starry Night", "Vincent van Gogh (1889)"),
+    Artwork(R.drawable.art2, "Title 2", "Artist 2 (year)"),
+    Artwork(R.drawable.art3, "Title 3", "Artist 3 (year)"),
+    Artwork(R.drawable.art4, "Title 4", "Artist 4 (year)"),
+    Artwork(R.drawable.art5, "Title 5", "Artist 5 (year)")
+)
 @Composable
 fun ArtSpaceApp(modifier: Modifier= Modifier){
-    var currentArtwork by remember{mutableStateOf(2)}
-    val imageRes = when (currentArtwork) {
-        1 -> R.drawable.art1
-        2 -> R.drawable.art2
-        3 -> R.drawable.art3
-        4 -> R.drawable.art4
-        else -> R.drawable.art5
-    }
+    var currentArtwork by remember{mutableStateOf(0)}
+    val artwork = artworks[currentArtwork]
+
     Column(
         modifier=modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(imageRes),
-            contentDescription = "The Starry Night by Vincent van Gogh",
+            painter = painterResource(artwork.imageRes),
+            contentDescription = artwork.title,
             contentScale = ContentScale.Fit,
             modifier = Modifier.size(300.dp)
         )
-        Text(text = "The Starry Night")
-        Text(text = "Vincent van Gogh (1889)")
-        Button(onClick = { if (currentArtwork < 5) currentArtwork++ }) {
+        Text(text = artwork.title)
+        Text(text = artwork.artist)
+        Button(onClick = { if (currentArtwork < artworks.size - 1) currentArtwork++}) {
             Text("Next")
         }
     }
