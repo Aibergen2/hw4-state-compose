@@ -65,10 +65,10 @@ fun ArtSpaceApp(modifier: Modifier= Modifier){
         Row (
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ){
-            Button(onClick = { if (currentArtwork > 0) currentArtwork-- }) {
+            Button(onClick = {  currentArtwork = (currentArtwork - 1 + artworks.size) % artworks.size}) {
                 Text("Previous")
             }
-            Button(onClick = { if (currentArtwork < artworks.size - 1) currentArtwork++ }) {
+            Button(onClick = {currentArtwork = (currentArtwork + 1) % artworks.size}) {
                 Text("Next")
             }
         }
