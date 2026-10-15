@@ -26,8 +26,10 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.layout.layout
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import com.example.artspace.ui.theme.ArtSpaceTheme
 
 class MainActivity : ComponentActivity() {
@@ -63,8 +65,17 @@ fun ArtSpaceApp(modifier: Modifier= Modifier){
             contentScale = ContentScale.Fit,
             modifier = Modifier.size(300.dp)
         )
-        Text(text = artwork.title)
-        Text(text = artwork.artist)
+        Text(
+            text = artwork.title,
+            fontSize = 24.sp,
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(top = 16.dp)
+        )
+        Text(
+            text = artwork.artist,
+            fontSize = 16.sp,
+            modifier = Modifier.padding(bottom = 16.dp)
+        )
         Row (
             horizontalArrangement = Arrangement.spacedBy(16.dp)
         ){
