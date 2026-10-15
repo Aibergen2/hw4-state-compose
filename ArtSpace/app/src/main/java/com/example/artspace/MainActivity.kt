@@ -35,14 +35,21 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun ArtSpaceApp(modifier: Modifier= Modifier){
-    var currentArtwork by remember{mutableStateOf(1)}
+    var currentArtwork by remember{mutableStateOf(2)}
+    val imageRes = when (currentArtwork) {
+        1 -> R.drawable.art1
+        2 -> R.drawable.art2
+        3 -> R.drawable.art3
+        4 -> R.drawable.art4
+        else -> R.drawable.art5
+    }
     Column(
         modifier=modifier.fillMaxSize(),
         horizontalAlignment = Alignment.CenterHorizontally,
         verticalArrangement = Arrangement.Center
     ) {
         Image(
-            painter = painterResource(R.drawable.art1),
+            painter = painterResource(imageRes),
             contentDescription = "The Starry Night by Vincent van Gogh"
         )
         Text(text = "The Starry Night")
